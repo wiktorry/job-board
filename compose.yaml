@@ -9,7 +9,7 @@ services:
     ports:
       - '5432:5432'
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB_NAME}"]
+      test: [ "CMD", "pg_isready", "-d", "${POSTGRES_DB_NAME}" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -23,6 +23,7 @@ services:
       - 'SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}'
       - 'SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB_NAME}'
       - 'SPRING_JPA_HIBERNATE_DDL_AUTO=update'
+      - 'AWS_REGION=eu-north-1'
     ports:
       - '8080:8080'
     depends_on:
